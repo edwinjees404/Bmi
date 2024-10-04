@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>BMI Calculator</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="box">
+          <h1 id="bmi" style="color: blue;">BMI Calculator</h1>
+          <div class="content">
+<br>
+
+            <div class="input">
+                <label for="height">Age</label>
+                <input type="text" class="text-input" id="age" autocomplete="off" required/>
+            </div>
+
+            <div class="gender">
+
+                <label class="container">
+                    <input style="color: aqua;" type="radio" name="radio" id="male"><p class="text">Male</p>
+                    <span class="checkmark"></span>
+                  </label>
+
+
+                <label class="container">
+                    <input type="radio" name="radio" id="female" ><p class="text">Female</p>
+                      <span class="checkmark"></span>
+                    </label>
+
+            </div>
+
+            <div class="containerHW">
+            <div class="inputH">
+              <label for="height">Height(cm)</label>
+              <input type="number" id="height" required>
+            </div>
+
+            <div class="inputW">
+              <label for="weight">Weight(kg)</label>
+              <input type="number" id="weight" required>
+            </div>
+          </div>
+
+            <button class="calculate" id="submit" onclick="calculate();">Calculate BMI</button>
+          </div>
+          <div class="result">
+            <p>Your BMI is</p>
+            <div id="result">00.00</div>
+            <p class="comment" id="comm"></p>
+          </div>
+        
+        </div>
+      </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modalText"></p>
+    </div></div>
+
+
+
+    
+<script>
+  var age = document.getElementById("age");
+var height = document.getElementById("height");
+var weight = document.getElementById("weight");
+var male = document.getElementById("male");
+var female = document.getElementById("female");
+let resultArea = document.querySelector(".comment");
+
+
+
+
+
+function calculate(){
+  
+  var bmi =weight.value/(height.value/100*height.value/100);
+      
+  var result = '';
+  if(bmi<18.5){
+    result = 'Underweight';
+     }else if(18.5<=bmi&&bmi<=24.9){
+    result = 'Healthy';
+     }else if(25<=bmi&&bmi<=29.9){
+    result = 'Overweight';
+     }else if(30<=bmi&&bmi<=34.9){
+    result = 'Obese';
+     }else if(35<=bmi){
+    result = 'Extremely obese';
+     }
+
+
+
+resultArea.style.display ="block";
+document.querySelector(".comment").innerHTML = result
+document.querySelector("#result").innerHTML = bmi.toFixed(3);
+
+    
+
+
+    }
+</script>
+
+</body>
+</html>
